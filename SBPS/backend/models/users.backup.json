@@ -13,7 +13,7 @@
   },
   "3": {
     "name": "Ranim",
-    "face_path": "models/faces/ranim.png",
+    "face_path": "models/faces/Ranim.png",
     "balance": 75,
     "pin": "3456"
   },
