@@ -1380,17 +1380,29 @@
             }
         }
 
-        function sendReceipt() {
-            const txId = document.getElementById('txId').textContent;
-            if (!txId || txId === '-') {
-                showError('Aucune transaction a envoyer.');
-                return;
-            }
+       function sendReceipt() {
+    const txId = document.getElementById('txId').textContent;
 
-            paymentMessage.textContent = 'Recu envoye pour la transaction ' + txId + '.';
-            paymentMessage.classList.add('show', 'success');
-            hideError();
-        }
+    if (!txId || txId === '-') {
+        showError('Aucune transaction a envoyer.');
+        return;
+    }
+
+    // récupérer les données
+    const ticketData = {
+        user: document.getElementById('txUser').textContent,
+        id: document.getElementById('txId').textContent,
+        amount: document.getElementById('txAmount').textContent,
+        balance: document.getElementById('txNewBalance').textContent,
+        time: document.getElementById('txTime').textContent
+    };
+
+    // stocker temporairement
+    localStorage.setItem("ticketData", JSON.stringify(ticketData));
+
+    // redirection vers ticket.html
+    window.open("ticket.html", "_blank");
+}
 
         async function switchCamera() {
             try {

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reçu de Paiement</title>
+
+<style>
+body {
+    font-family: 'Manrope', sans-serif;
+    background: linear-gradient(135deg, #4f96a8, #243a5a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.ticket {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    width: 350px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.ticket h2 {
+    margin-bottom: 10px;
+    color: #9df7ff;
+}
+
+.ticket p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed rgba(255,255,255,0.2);
+    padding: 8px 0;
+}
+
+.label {
+    opacity: 0.7;
+}
+
+.value {
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #9df7ff;
+    color: #003;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="ticket">
+    <h2>✔ Paiement Réussi</h2>
+    <p>Reçu digital SBPS</p>
+
+    <div class="info">
+        <div class="row">
+            <span class="label">Utilisateur</span>
+            <span class="value" id="tUser"></span>
+        </div>
+        <div class="row">
+            <span class="label">Transaction</span>
+            <span class="value" id="tId"></span>
+        </div>
+        <div class="row">
+            <span class="label">Montant</span>
+            <span class="value" id="tAmount"></span>
+        </div>
+        <div class="row">
+            <span class="label">Solde</span>
+            <span class="value" id="tBalance"></span>
+        </div>
+        <div class="row">
+            <span class="label">Heure</span>
+            <span class="value" id="tTime"></span>
+        </div>
+        <div class="row">
+            <span class="label">Mode</span>
+            <span class="value">Portefeuille</span>
+        </div>
+    </div>
+
+    <button class="btn" onclick="window.print()">Imprimer</button>
+
+    <div class="footer">
+        Merci pour votre confiance 💙
+    </div>
+</div>
+
+<script>
+// récupérer les données depuis localStorage
+const data = JSON.parse(localStorage.getItem("ticketData"));
+
+if (data) {
+    document.getElementById("tUser").textContent = data.user;
+    document.getElementById("tId").textContent = data.id;
+    document.getElementById("tAmount").textContent = data.amount;
+    document.getElementById("tBalance").textContent = data.balance;
+    document.getElementById("tTime").textContent = data.time;
+}
+</script>
+
+</body>
+</html>

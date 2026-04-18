@@ -14,7 +14,7 @@
   "3": {
     "name": "Ranim",
     "face_path": "models/faces/Ranim.png",
-    "balance": 75,
+    "balance": 120,
     "pin": "3456"
   },
   "4": {
